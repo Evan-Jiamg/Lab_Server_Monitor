@@ -1,0 +1,181 @@
+/* =========================================================
+   Lab Server Monitor — design tokens
+   Type: Manrope (UI) + JetBrains Mono (numerics/terminal)
+   Light: warm off-white. Dark: cool slate.
+   Accent: indigo (oklch 0.62 0.15 268).
+   3 style variations: aurora (soft pastel), mono (minimal),
+   glass (heavier glassmorphism).
+   ========================================================= */
+
+:root {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* tone tokens — light by default */
+  --bg: oklch(0.985 0.004 80);
+  --bg-elev: oklch(1 0 0);
+  --bg-sunken: oklch(0.965 0.006 80);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.975 0.004 80);
+  --border: oklch(0.92 0.006 80);
+  --border-strong: oklch(0.85 0.008 80);
+  --text: oklch(0.22 0.02 270);
+  --text-muted: oklch(0.5 0.015 270);
+  --text-dim: oklch(0.65 0.012 270);
+
+  /* accent — indigo */
+  --accent: oklch(0.62 0.15 268);
+  --accent-soft: oklch(0.94 0.04 268);
+  --accent-fg: oklch(0.99 0 0);
+
+  /* status */
+  --ok: oklch(0.7 0.13 155);
+  --ok-soft: oklch(0.94 0.05 155);
+  --warn: oklch(0.78 0.13 80);
+  --warn-soft: oklch(0.96 0.05 80);
+  --crit: oklch(0.65 0.18 25);
+  --crit-soft: oklch(0.94 0.05 25);
+  --info: oklch(0.7 0.12 230);
+  --info-soft: oklch(0.95 0.04 230);
+
+  /* gradients per "lane" */
+  --grad-gpu: linear-gradient(135deg, oklch(0.94 0.06 268) 0%, oklch(0.96 0.05 200) 100%);
+  --grad-cpu: linear-gradient(135deg, oklch(0.95 0.05 200) 0%, oklch(0.96 0.05 155) 100%);
+  --grad-ram: linear-gradient(135deg, oklch(0.95 0.05 80) 0%, oklch(0.96 0.05 30) 100%);
+  --grad-disk: linear-gradient(135deg, oklch(0.94 0.06 320) 0%, oklch(0.96 0.05 268) 100%);
+
+  /* shadows */
+  --shadow-sm: 0 1px 2px 0 oklch(0.2 0.02 270 / 0.05);
+  --shadow-md: 0 4px 16px -4px oklch(0.2 0.02 270 / 0.08), 0 1px 2px 0 oklch(0.2 0.02 270 / 0.04);
+  --shadow-lg: 0 12px 32px -8px oklch(0.2 0.02 270 / 0.14), 0 2px 4px 0 oklch(0.2 0.02 270 / 0.04);
+
+  /* radii */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-2xl: 36px;
+}
+
+[data-theme="dark"] {
+  --bg: oklch(0.16 0.015 265);
+  --bg-elev: oklch(0.21 0.018 265);
+  --bg-sunken: oklch(0.13 0.015 265);
+  --surface: oklch(0.21 0.018 265);
+  --surface-2: oklch(0.245 0.02 265);
+  --border: oklch(0.28 0.02 265);
+  --border-strong: oklch(0.35 0.022 265);
+  --text: oklch(0.96 0.005 270);
+  --text-muted: oklch(0.72 0.012 270);
+  --text-dim: oklch(0.55 0.012 270);
+
+  --accent: oklch(0.72 0.16 268);
+  --accent-soft: oklch(0.32 0.07 268);
+  --accent-fg: oklch(0.15 0.02 268);
+
+  --ok: oklch(0.78 0.15 155);
+  --ok-soft: oklch(0.3 0.06 155);
+  --warn: oklch(0.82 0.15 80);
+  --warn-soft: oklch(0.32 0.06 80);
+  --crit: oklch(0.72 0.18 25);
+  --crit-soft: oklch(0.32 0.08 25);
+  --info: oklch(0.78 0.13 230);
+  --info-soft: oklch(0.3 0.05 230);
+
+  --grad-gpu: linear-gradient(135deg, oklch(0.27 0.08 268) 0%, oklch(0.24 0.06 200) 100%);
+  --grad-cpu: linear-gradient(135deg, oklch(0.26 0.06 200) 0%, oklch(0.26 0.06 155) 100%);
+  --grad-ram: linear-gradient(135deg, oklch(0.27 0.07 80) 0%, oklch(0.26 0.07 30) 100%);
+  --grad-disk: linear-gradient(135deg, oklch(0.27 0.08 320) 0%, oklch(0.25 0.07 268) 100%);
+
+  --shadow-sm: 0 1px 2px 0 oklch(0 0 0 / 0.3);
+  --shadow-md: 0 4px 16px -4px oklch(0 0 0 / 0.45), 0 1px 2px 0 oklch(0 0 0 / 0.25);
+  --shadow-lg: 0 12px 32px -8px oklch(0 0 0 / 0.55), 0 2px 4px 0 oklch(0 0 0 / 0.3);
+}
+
+/* style variations modify card decoration */
+[data-style="mono"] {
+  --grad-gpu: var(--surface);
+  --grad-cpu: var(--surface);
+  --grad-ram: var(--surface);
+  --grad-disk: var(--surface);
+}
+[data-style="glass"] {
+  --shadow-md: 0 8px 32px -4px oklch(0.2 0.02 270 / 0.12), 0 2px 6px 0 oklch(0.2 0.02 270 / 0.06);
+}
+[data-theme="dark"][data-style="glass"] {
+  --shadow-md: 0 8px 32px -4px oklch(0 0 0 / 0.5), 0 2px 6px 0 oklch(0 0 0 / 0.3);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+  letter-spacing: -0.005em;
+  transition: background 240ms ease, color 240ms ease;
+}
+
+button { font-family: inherit; cursor: pointer; }
+input, button { font-family: inherit; }
+
+::selection { background: var(--accent-soft); color: var(--text); }
+
+/* scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--border-strong); background-clip: content-box; }
+
+/* numerals */
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+
+/* shared card surface */
+.surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+[data-style="glass"] .surface {
+  background: color-mix(in oklab, var(--surface) 80%, transparent);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+/* shimmer animation for live status */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ok) 30%, transparent);
+  animation: pulseDot 1.6s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* fade & slide-in for screen transitions */
+@keyframes screenIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.screen { animation: screenIn 380ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* utility */
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.gap-1 { gap: 4px; } .gap-2 { gap: 8px; } .gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; } .gap-5 { gap: 20px; } .gap-6 { gap: 24px; }
+.muted { color: var(--text-muted); }
+.dim { color: var(--text-dim); }
+.mono { font-family: var(--font-mono); }
